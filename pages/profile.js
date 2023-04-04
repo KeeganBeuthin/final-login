@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import {getSession} from 'next-auth/react'
 
-export default () => {
-    return(
+ const page= () => {
+
+    return (
         <section className='container mx-auto text-center'>
         <h3 className='test-4xl font-bold'>Profile Page</h3>
 
@@ -30,3 +31,5 @@ return {
 }
 
 }
+
+export default page
