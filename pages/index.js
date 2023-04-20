@@ -10,7 +10,7 @@ import {useSession, getSession, signOut} from 'next-auth/react'
 export default function Home() {
 const {data:session}=useSession()
 
-function handleSignOut(){
+ function handleSignOut(){
 signOut()
 }
 

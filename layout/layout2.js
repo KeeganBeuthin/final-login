@@ -1,26 +1,32 @@
-import styles from '../styles/Dash.module.css'
+import CardLineChart from "../components/components/Cards/CardLineChart.js";
+import CardBarChart from "../components/components/Cards/CardBarChart.js";
+import CardPageVisits from "../components/components/Cards/CardPageVisits.js";
+import CardSocialTraffic from "../components/components/Cards/CardSocialTraffic.js";
 
-export default function Db({children}){
-return(
-    <div>
-        
-    <div className='bg-blue-500 flex h-screen'>
-    
-    <div className='mb-80 w-screen h-20 bg-slate-50 rounded-md '>
-    <div className={styles.logoImgStyle}>
-    <div className={styles.logoImg}></div>
+// layout for page
 
-    </div>
-        <div className='display-inline-block justify-evenly'>
-        {children}
+import Admin from ".//Admin.js";
+
+
+export default function Db() {
+  return (
+    <>
+      <div className="flex flex-wrap">
+        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+          <CardLineChart />
         </div>
-        
-     </div>
-    </div>
-    
-    
-    </div>
-
-)
-
+        <div className="w-full xl:w-4/12 px-4">
+          <CardBarChart />
+        </div>
+      </div>
+      <div className="flex flex-wrap mt-4">
+        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+          <CardPageVisits />
+        </div>
+        <div className="w-full xl:w-4/12 px-4">
+          <CardSocialTraffic />
+        </div>
+      </div>
+    </>
+  );
 }

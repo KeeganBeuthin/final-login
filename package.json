@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.7",
     "bcryptjs": "^2.4.3",
+    "chart.js": "^4.2.1",
     "dotenv": "^16.0.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",

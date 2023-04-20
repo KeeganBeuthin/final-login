@@ -1,9 +1,14 @@
 import { redirect } from "next/dist/server/api-utils"
 import {useSession, getSession} from 'next-auth/react'
-import Db from '../layout/layout2'
 import styles from '../styles/Dash.module.css'
 import Link from "next/link"
 import {signOut} from 'next-auth/react'
+import Db from '../layout/layout2'
+import Admin from "../layout/Admin.js";
+import CardLineChart from "../components/components/Cards/CardLineChart.js";
+import CardBarChart from "../components/components/Cards/CardBarChart.js";
+import CardPageVisits from "../components/components/Cards/CardPageVisits.js";
+import CardSocialTraffic from "../components/components/Cards/CardSocialTraffic.js";
 
 
 
@@ -26,43 +31,38 @@ export async function getServerSideProps({req}){
 
 
 
-export default function dashboard(handleSignOut){
+export default function dashboard(){
+  
+ 
   return(
-
-    
-    
-     <Db>
-     <ul className='flex justify-evenly py-7  text-lg'>
-         <li>
-           <Link legacyBehavior href={'./balance'}><a className={styles.nav}>balance sheet</a></Link> 
-         </li>
-         <li>
-             send
-         </li>
-         <li>
-             friends
-         </li>
-         <li className={styles.nav} onClick={handleSignOut}>
-             Sign Out
-         </li>
-     </ul>
-
-     </Db>
-      
-  )
-
-  function handleSignOut(){
-    signOut()
+   
+  
+        <>
+         
+         <Admin>
+           
+          <div className="flex flex-wrap">
+            
+            <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+              <CardLineChart />
+            </div>
+            <div className="w-full xl:w-4/12 px-4">
+              <CardBarChart />
+            </div>
+          </div>
+          <div className="flex flex-wrap mt-4">
+            <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+              <CardPageVisits />
+            </div>
+            <div className="w-full xl:w-4/12 px-4">
+              <CardSocialTraffic />
+            </div>
+          </div>
+          </Admin>
+        </>
+      );
     }
-    
-      return (
-        <div className={styles.container}>
-          <Head>
-            <title>Home Page</title>
-          </Head>
-         {session? User({session, handleSignOut}) : Guest()}
-        </div>
-      )
-    
-}
 
+
+
+  
