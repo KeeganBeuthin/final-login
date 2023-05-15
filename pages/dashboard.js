@@ -5,10 +5,10 @@ import Link from "next/link"
 import {signOut} from 'next-auth/react'
 import Db from '../layout/layout2'
 import Admin from "../layout/Admin.js";
-import CardLineChart from "../components/components/Cards/CardLineChart.js";
-import CardBarChart from "../components/components/Cards/CardBarChart.js";
-import CardPageVisits from "../components/components/Cards/CardPageVisits.js";
-import CardSocialTraffic from "../components/components/Cards/CardSocialTraffic.js";
+import CardLineChart from "../components/Cards/CardLineChart.js";
+import CardBarChart from "../components/Cards/CardBarChart.js";
+import CardPageVisits from "../components/Cards/CardPageVisits.js";
+import CardSocialTraffic from "../components/Cards/CardSocialTraffic.js";
 import MyTable from './test.js'
 
 

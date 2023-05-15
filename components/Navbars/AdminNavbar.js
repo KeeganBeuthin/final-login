@@ -1,6 +1,6 @@
 import React from "react";
 
-import UserDropdown from "/components/components/Dropdowns/UserDropdown.js";
+import UserDropdown from "/components/Dropdowns/UserDropdown.js";
 import {signOut} from 'next-auth/react'
 
 export default function Navbar(handleSignOut) {
