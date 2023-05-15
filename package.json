@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.0",
+    "@mui/x-data-grid": "^6.3.1",
+    "@mui/x-data-grid-generator": "^6.3.1",
     "@popperjs/core": "^2.11.7",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.2.1",
@@ -19,9 +24,12 @@
     "mongoose": "^7.0.3",
     "next": "13.2.4",
     "next-auth": "^4.20.1",
+    "pg": "^8.10.0",
+    "postgres": "^3.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "react-table": "^7.8.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
