@@ -25,16 +25,21 @@ export default function Login(){
 
 
     async function onSubmit(values){
-        const status = await signIn('credentials',{
-            redirect: false,
-            email: values.email,
-            password:values.password,
-            callbackUrl: '/'
-        })
 
-        if(status.ok) router.push(status.url)
+        const {email, password} = values
+       console.log(values)
+        const options={        
+            method: "GET",
+            headers: {'Content-Type': 'application/json'},
+        }
+
+        await fetch(`http://localhost:9000/user/${email}/${password}`, options)
+        .then((res) => res.json())
+        .then((data) => {
+            router.push("http://localhost:3000");
+          
+        });
     }
-    
     
    //Google Handler function
    async function handleGoogleSignin(){
@@ -56,7 +61,7 @@ export default function Login(){
             <section className="W-3/4 mx-10 flex flex-col gap-10">
                 <div className="title">
                  <h1 className="text-gray-800 text-4xl font-bold py-4">Explore</h1>
-                 <p className="w-3/4 mx-auto text-gray-400">yooooooo</p>
+                 <p className="w-3/4 mx-auto text-gray-400">Welcome</p>
                 </div>
               {/* form */}
               <form className="flex mx-12 flex-col gap-5" onSubmit={formik.handleSubmit}>
@@ -84,7 +89,7 @@ export default function Login(){
                    <span className='icon flex items-center px-10' onClick={() => setShow(!show)}>
                        <HiFingerPrint size={25}></HiFingerPrint>
                    </span>
-                  </div>
+                  </div> 
                   {formik.errors.password && formik.touched.password? <span className='text-rose-500'>{formik.errors.password}</span>: <></>}
                   {/* login buttons*/}
                   <div className='input-button'>

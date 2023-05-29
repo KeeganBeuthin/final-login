@@ -27,7 +27,7 @@ if(!session){
 
 //authorize user return session
 return {
-    props: {sesion}
+    props: {session}
 }
 
 }

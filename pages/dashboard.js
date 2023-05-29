@@ -12,24 +12,43 @@ import CardSocialTraffic from "../components/Cards/CardSocialTraffic.js";
 import MyTable from './test.js'
 
 
-export async function getServerSideProps({req}){
-    const session = await getSession({req}) 
-    
-    if (!session){
-      return{
-        redirect: {
-          destination: '/login',
-          permanent: false
-        }
-      }
-    }
-    
+export async function checkUserSession() {
+  const sessionId = localStorage.getItem("sessionId");
+
+  if (!sessionId) {
+    console.log('Error: No sessionId found');
+    return null;
+  }
+
+  const options = {
+    method: "GET",  
+    headers: {
+      "Content-Type": "application/json",
+      "X-Session-id": sessionId,
+    },
+  };
+
+  const response = await fetch("http://localhost:9000/user/getSession", options);
+  const data = await response.json();
+  return data;
+}
+
+export async function getServerSideProps() {
+  const data = await checkUserSession();
+
+  if (!data) {
     return {
-      props: {session}
-    }
-   }
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
 
-
+  return {
+    props: { data },
+  };
+}
 
 export default function dashboard(){
   

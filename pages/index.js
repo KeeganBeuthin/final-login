@@ -7,8 +7,7 @@ import {useState} from 'react'
 import {useSession, getSession, signOut} from 'next-auth/react'
 
 
-export default function Home() {
-const {data:session}=useSession()
+export default function Home({session}) {
 
  function handleSignOut(){
 signOut()
@@ -19,7 +18,7 @@ signOut()
       <Head>
         <title>Home Page</title>
       </Head>
-     {session? User({session, handleSignOut}) : Guest()}
+      {session ? <User session={session} handleSignOut={handleSignOut} /> : <Guest />}
     </div>
   )
 }

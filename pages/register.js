@@ -9,6 +9,7 @@ import {useFormik} from 'formik'
 import { registerValidate } from '../lib/validate'
 import {useRouter} from 'next/router'
 
+
 export default function Register(){
     
     const[show,setShow] =useState({password: false, cpassword: false})    
@@ -26,16 +27,20 @@ export default function Register(){
 
     async function onSubmit(values){
         console.log(values)
+        
+      
     }
 
     async function onSubmit(values){
-        const options={
+        const options={        
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(values)
+            
         }
+        
 
-        await fetch('http://localhost:3000/api/auth/signup', options)
+        await fetch('http://localhost:9000/user/create', options)
         .then(res=> res.json())
         .then((data)=>{
             if(data) router.push('http://localhost:3000')
@@ -53,7 +58,7 @@ export default function Register(){
             <section className="W-3/4 mx-10 flex flex-col gap-10">
                 <div className="title">
                  <h1 className="text-gray-800 text-4xl font-bold py-4">Register</h1>
-                 <p className="w-3/4 mx-auto text-gray-400">yooooooo</p>
+                 <p className="w-3/4 mx-auto text-gray-400">Welcome</p>
                 </div>
               {/* form */}
               <form className="flex mx-12 flex-col gap-5" onSubmit={formik.handleSubmit}>
