@@ -10,26 +10,29 @@ import CardBarChart from "../components/Cards/CardBarChart.js";
 import CardPageVisits from "../components/Cards/CardPageVisits.js";
 import CardSocialTraffic from "../components/Cards/CardSocialTraffic.js";
 import MyTable from './test.js'
+import { useEffect } from "react"
+
 
 
 export async function checkUserSession() {
-  const sessionId = localStorage.getItem("sessionId");
-
-  if (!sessionId) {
-    console.log('Error: No sessionId found');
-    return null;
-  }
 
   const options = {
-    method: "GET",  
+    method: "GET",
+   
     headers: {
       "Content-Type": "application/json",
-      "X-Session-id": sessionId,
+      'credentials': 'include',
     },
   };
-
-  const response = await fetch("http://localhost:9000/user/getSession", options);
+  
+  const response = await fetch("http://localhost:5000", options);
+  console.log('I am working')
+  console.log(response)
   const data = await response.json();
+  console.log(data)
+  if(!data){
+    return res.status(200).json({error:'no data'})
+  }
   return data;
 }
 
@@ -52,16 +55,16 @@ export async function getServerSideProps() {
 
 export default function dashboard(){
   
- 
+
   return(
-   
-  
+
+
         <>
-         
+
          <Admin>
-           
+
           <div className="flex flex-wrap">
-            
+
             <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
               <CardLineChart />
             </div>
@@ -84,4 +87,3 @@ export default function dashboard(){
 
 
 
-  

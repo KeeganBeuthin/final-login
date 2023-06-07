@@ -4,6 +4,8 @@ import React from 'react'
 import {useMemo} from 'react'
 import { useTable, usePagination } from "react-table";
 import  styles from '../styles/app.module.css'
+import { end } from "@popperjs/core";
+
 export default function Table(){
   const [data, setData] = useState([]);
 
@@ -13,13 +15,12 @@ export default function Table(){
   useEffect(() => {
     axios
       .get('http://localhost:9000/transaction')
-      .then((response) => {
-        setData(response.data);
-      }),[]})
+      .then(response => setData(response.data))
+    }, [])
 
 
   const columns = React.useMemo(
-    () => [
+    () => [ 
       {
         Header: 'Name',
         accessor: 'name', // accessor is the "key" in the data

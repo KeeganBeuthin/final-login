@@ -10,6 +10,9 @@ import { useFormik } from 'formik'
 import login_validate from '../lib/validate'
 import { useRouter } from  'next/router';
 
+
+
+
 export default function Login(){
 
     const[show,setShow]= useState(false)
@@ -25,20 +28,21 @@ export default function Login(){
 
 
     async function onSubmit(values){
-
+if(!values){
+    console.log('data failed')
+}
         const {email, password} = values
-       console.log(values)
-        const options={        
-            method: "GET",
-            headers: {'Content-Type': 'application/json'},
-        }
 
+
+    const options={        
+            method: "GET",
+            headers: {'Content-Type': 'application/json',},
+            credentials: "include"
+        }
+    console.log('we are here')
         await fetch(`http://localhost:9000/user/${email}/${password}`, options)
-        .then((res) => res.json())
-        .then((data) => {
-            router.push("http://localhost:3000");
-          
-        });
+        .then((res) => res.json(), router.push("http://localhost:3000"))
+        
     }
     
    //Google Handler function
