@@ -24,9 +24,9 @@ export async function checkUserSession() {
       'credentials': 'include',
     },
   };
-  
-  const response = await fetch("http://localhost:5000", options);
   console.log('I am working')
+  const response = await fetch("http://localhost:9000/be/user/getSession", options);
+ 
   console.log(response)
   const data = await response.json();
   console.log(data)

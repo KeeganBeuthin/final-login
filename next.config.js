@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // async rewrites(){
-  //   return[{
-  //     source: "/ingest/:path*",
-  //     destination:'https://app.posthog.com/:path*'
-  //   },
-  // ];
-  // },
+  async rewrites(){
+    console.log('rewrites in use')
+    return[{
+      source: "/be/:path*",
+      destination:'/be/endpoint=:path*'
+    },
+  ];
+  },
 }
 
 module.exports = nextConfig

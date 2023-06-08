@@ -31,27 +31,33 @@ export default function Login(){
 if(!values){
     console.log('data failed')
 }
-        const {email, password} = values
+
 
 
     const options={        
-            method: "GET",
-            headers: {'Content-Type': 'application/json',},
-            credentials: "include"
+            method: "Post",
+            headers: {'Content-Type': 'application/json', 'credentials': 'include',},
+            body: JSON.stringify(values)
         }
+        
+        console.log(options)
     console.log('we are here')
-        await fetch(`http://localhost:9000/user/${email}/${password}`, options)
-        .then((res) => res.json(), router.push("http://localhost:3000"))
+        await fetch(`http://localhost:9000/be/user/login`, options)
+      
+        .then((res) => res.json(),  router.push("http://localhost:3000"))
         
     }
     
    //Google Handler function
    async function handleGoogleSignin(){
+
+    e.preventDefault();
        signIn('google',{callbackUrl: 'http://localhost:3000/'})
    }
 
    //Github Login
    async function handleGithubSignin(){
+    e.preventDefault();
        signIn('github', {callbackUrl: 'http://localhost:3000'})
    }
 
