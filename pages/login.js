@@ -40,11 +40,11 @@ if(!values){
             body: JSON.stringify(values)
         }
         
-        console.log(options)
+        
     console.log('we are here')
-        await fetch(`http://localhost:9000/be/user/login`, options)
+        await fetch(`/be/user/login`, options)
       
-        .then((res) => res.json(),  router.push("http://localhost:3000"))
+        .then((res) => JSON.stringify(res),  router.push("http://localhost:3000"))
         
     }
     
