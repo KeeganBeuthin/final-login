@@ -4,8 +4,8 @@ const nextConfig = {
   async rewrites(){
     console.log('rewrites in use')
     return[{
-      source: "/be/:slug*",
-      destination:'/be/endpoint=:slug*',
+      source: "/be/:path*",
+      destination:'/api/:path*',
     },
   ];
   },

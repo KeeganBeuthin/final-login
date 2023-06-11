@@ -41,7 +41,7 @@ if(!values){
         }
         
         
-    console.log('we are here')
+    console.log('login!!1')
         await fetch(`/be/user/login`, options)
       
         .then((res) => JSON.stringify(res),  router.push("http://localhost:3000"))
