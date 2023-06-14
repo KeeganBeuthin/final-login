@@ -1,12 +1,24 @@
 import React from "react";
-
+import Link from "next/link";
 import UserDropdown from "/components/Dropdowns/UserDropdown.js";
 import {signOut} from 'next-auth/react'
-
+import { useRouter } from "next/router";
 export default function Navbar(handleSignOut) {
-  function handleSignOut(){
+  const router=useRouter()
+  async function handleSignOut(){
+    
     signOut()
+
+    const options={        
+      method: "Delete",
+      headers: {'Content-Type': 'application/json', 'credentials': 'include',},
+  }
+
+    await fetch(`/be/user/logout`, options)
+
+    router.push('/login')
     }
+
   return (
     
     <>
@@ -22,6 +34,7 @@ export default function Navbar(handleSignOut) {
             Dashboard
           </a>
           <button className='mt-2 ml-20 px-5 rounded-sm bg-ingigo-500 bg-gray-50' onClick={handleSignOut}>Sign Out</button>
+          <Link legacyBehavior href={'/profile'}><a className='mt-2 ml-20 px-5 rounded-sm bg-ingigo-500 bg-gray-50'>Profile</a></Link>
         
           {/* Form */}
           <form className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">

@@ -42,23 +42,23 @@ if(!values){
         
         
     console.log('login!!1')
+    
         await fetch(`/be/user/login`, options)
       
-        .then((res) => JSON.stringify(res),  router.push("http://localhost:3000"))
+        .then((res) => JSON.stringify(res), await new Promise((resolve) => setTimeout(resolve, 2000)),  router.push("http://localhost:3000/dashboard"))
         
     }
     
    //Google Handler function
    async function handleGoogleSignin(){
 
-    e.preventDefault();
-       signIn('google',{callbackUrl: 'http://localhost:3000/'})
+       signIn('google',{callbackUrl: 'http://localhost:3000/dashboard'})
    }
 
    //Github Login
    async function handleGithubSignin(){
-    e.preventDefault();
-       signIn('github', {callbackUrl: 'http://localhost:3000'})
+   
+       signIn('github', {callbackUrl: 'http://localhost:3000/dashboard'})
    }
 
 

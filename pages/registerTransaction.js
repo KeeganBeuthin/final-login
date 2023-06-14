@@ -30,7 +30,7 @@ async function onSubmit(values){
        body: JSON.stringify(values)
        
    }
-   await fetch('http://localhost:9000/transaction/create', options)
+   await fetch('http://localhost:9000/be/transaction/create', options)
    .then(res=> res.json())
    .then((data)=>{
       console.log(data)

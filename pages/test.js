@@ -14,7 +14,7 @@ export default function Table(){
 
   useEffect(() => {
     axios
-      .get('http://localhost:9000/transaction')
+      .get('http://localhost:9000/be/transaction')
       .then(response => setData(response.data))
     }, [])
 
